@@ -1,1 +1,3 @@
-{{table.seatsCount}}
+{{#each (range 0 table.seatsCount) as |seatNumber|}}
+  <div class="seat">{{seatNumber}}</div>
+{{/each}}

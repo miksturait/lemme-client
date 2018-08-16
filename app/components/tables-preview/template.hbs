@@ -1,1 +1,4 @@
-<span>Hello from component</span>
+<button {{action 'addTable'}}>Add table</button>
+{{#each tables as |table|}}
+  {{table.seatsCount}}
+{{/each}}

@@ -7,6 +7,8 @@
   <button {{action 'showForm'}}>Add table</button>
 {{/if}}
 
-{{#each tables as |table|}}
-  {{tables-preview/table table=table}}
-{{/each}}
+<div class="tables">
+  {{#each tables as |table|}}
+    {{tables-preview/table table=table}}
+  {{/each}}
+</div>

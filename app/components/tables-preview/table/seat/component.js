@@ -19,11 +19,32 @@ export default Component.extend({
     
   }),
 
-  click() {
+  click(event) {
+    if (event.target.tagName === 'SPAN') {
+      return this._leaveSeat();
+    }
+
     if (this.active) {
       this.toggleProperty('ready');
     } else {
       this.set('active', true);
+      this.set('displayCloseButton', true);
     }
+  },
+
+  mouseEnter() {
+    if (this.active) {
+      this.set('displayCloseButton', true);
+    }
+  },
+
+  mouseLeave() {
+    this.set('displayCloseButton', false);
+  },
+
+  _leaveSeat() {
+    this.set('active', false);
+    this.set('ready', false);
+    this.set('displayCloseButton', false);
   }
 });

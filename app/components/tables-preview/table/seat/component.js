@@ -20,7 +20,7 @@ export default Component.extend({
   }),
 
   click(event) {
-    if (event.target.tagName === 'SPAN') {
+    if (event.target.tagName === 'I') {
       return this._leaveSeat();
     }
 

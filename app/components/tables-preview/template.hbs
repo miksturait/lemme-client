@@ -8,7 +8,7 @@
 {{/if}}
 
 <div class="tables">
-  {{#each tables as |table|}}
+  {{#each filteredTables as |table|}}
     {{tables-preview/table
       table=table
       removeTable=(action 'removeTable')

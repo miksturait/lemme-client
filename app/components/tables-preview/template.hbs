@@ -9,6 +9,9 @@
 
 <div class="tables">
   {{#each tables as |table|}}
-    {{tables-preview/table table=table}}
+    {{tables-preview/table
+      table=table
+      removeTable=(action 'removeTable')
+    }}
   {{/each}}
 </div>

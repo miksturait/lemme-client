@@ -21,6 +21,10 @@ export default Component.extend({
       this.set('showAddTableForm', false);
     },
 
+    removeTable(table) {
+      table.destroyRecord();
+    },
+
     showForm() {
       this.set('showAddTableForm', true);
     }

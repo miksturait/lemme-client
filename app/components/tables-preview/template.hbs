@@ -1,0 +1,14 @@
+{{#if showAddTableForm}}
+  <form {{action 'addTable' on='submit'}}>
+    {{input type='number' value=seatsCount min='1'}}
+    <button type='submit'>Add</button>
+  </form>
+{{else}}
+  <button {{action 'showForm'}}>Add table</button>
+{{/if}}
+
+<div class="tables">
+  {{#each tables as |table|}}
+    {{tables-preview/table table=table}}
+  {{/each}}
+</div>

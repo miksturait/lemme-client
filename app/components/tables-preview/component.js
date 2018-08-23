@@ -13,25 +13,40 @@ export default Component.extend({
 
   actions: {
     addTable() {
-      const table = this.get('store')
-        .createRecord('table')
+      this.get('store')
+        .createRecord('table', {name: '1'})
+        .save()
+        .then((table) => {
+           range(this.seatsCount).map(() => {
+            return this.get('store').createRecord('seat', {
+              active: false,
+              ready: false,
+              table
+            })
+            .save()
+             .then((seat) => {
+                table.get('seats').pushObject(seat);
+                table.save();
+             });
+          });
+        })
 
-      const seatsPromises = range(this.seatsCount).map(() => {
-        return this.get('store').createRecord('seat', {
-          active: false,
-          ready: false,
-          table
-        }).save();
-      });
+      // const seatsPromises = range(this.seatsCount).map(() => {
+      //   return this.get('store').createRecord('seat', {
+      //     active: false,
+      //     ready: false,
+      //     table
+      //   }).save();
+      // });
 
-      Promise.all(seatsPromises)
-        .then((seats) => {
-          table.set('seats', seats);
-          table.save();
+      // Promise.all(seatsPromises)
+      //   .then((seats) => {
+      //     table.set('seats', seats);
+      //     table.save();
 
-          this.set('seatsCount', 2);
-          this.set('showAddTableForm', false);
-        });
+      //     this.set('seatsCount', 2);
+      //     this.set('showAddTableForm', false);
+      //   });
     },
 
     removeTable(table) {

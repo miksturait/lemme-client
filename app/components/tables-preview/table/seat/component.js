@@ -1,10 +1,11 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
+import { alias } from '@ember/object/computed';
 
 export default Component.extend({
   classNames: ['seat'],
-  active: false,
-  ready: false,
+  active: alias('seat.active'),
+  ready: alias('seat.ready'),
 
   classNameBindings: ['cssClass'],
 
@@ -16,7 +17,7 @@ export default Component.extend({
     if (this.active) {
       return 'active';
     }
-    
+
   }),
 
   click(event) {
@@ -28,6 +29,7 @@ export default Component.extend({
       this.toggleProperty('ready');
     } else {
       this.set('active', true);
+      this.get('seat').save();
       this.set('displayCloseButton', true);
     }
   },
@@ -45,6 +47,7 @@ export default Component.extend({
   _leaveSeat() {
     this.set('active', false);
     this.set('ready', false);
+    this.get('seat').save();
     this.set('displayCloseButton', false);
   }
 });

@@ -1,3 +1,5 @@
-{{#each (range 0 table.seatsCount) as |seatNumber|}}
-  {{tables-preview/table/seat}}
+{{#each table.seats as |seat|}}
+  {{tables-preview/table/seat seat=seat}}
 {{/each}}
+
+<button {{action removeTable table}}>Remove</button>

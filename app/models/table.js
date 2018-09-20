@@ -2,6 +2,6 @@ import DS from 'ember-data';
 
 export default DS.Model.extend({
   name: DS.attr('string'),
-
-  seats: DS.hasMany('seat')
+  seatsCount: DS.attr('number'),
+  seats: DS.hasMany('seat', { async: false })
 });

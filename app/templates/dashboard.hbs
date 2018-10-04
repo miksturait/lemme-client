@@ -1,3 +1,5 @@
 {{tables-preview tables=model}}
 
-{{chat-box}}
+{{#messages-provider as |socket|}}
+  {{chat-box messages=socket.messages sendMessage=socket.sendMessage}}
+{{/messages-provider}}

@@ -17,31 +17,12 @@ export default Component.extend({
   actions: {
     addTable() {
      const table = this.get('store')
-        .createRecord('table', {name: '1'})
+        .createRecord('table', {name: '1', seatsCount: this.seatsCount}).save();
 
-      const seatsPromises = range(this.seatsCount).map(() => {
-        return this.get('store').createRecord('seat', {
-          active: false,
-          ready: false,
-          table
-        }).save();
-      });
-
-      Promise.all(seatsPromises)
-        .then((seats) => {
-          table.set('seats', seats);
-          table.save();
-
-          this.set('seatsCount', 2);
-          this.set('showAddTableForm', false);
-        });
     },
 
     removeTable(table) {
-      Promise.all(table.get('seats').map((seat) => seat.destroyRecord()))
-        .then(() => {
-          table.destroyRecord();
-        })
+      table.destroyRecord();
     },
 
     showForm() {

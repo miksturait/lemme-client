@@ -1,0 +1,11 @@
+<h1>CHAT</h1>
+
+<ul>
+  {{#each messages as |message|}}
+    <li>
+      {{message}}
+    </li>
+  {{/each}}
+</ul>
+
+{{chat-box/message-input}}

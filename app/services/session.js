@@ -13,7 +13,7 @@ export default Service.extend({
 
   authenticate(nickname) {
     this.set('nickname', nickname);
-    this.router.transitionTo('dashboard');
+    this.router.transitionTo('protected.dashboard');
   },
 
   signOut() {

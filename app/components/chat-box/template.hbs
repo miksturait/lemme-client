@@ -5,16 +5,16 @@
         <span class="chat-box__avatar">
           {{ember-initials/gravatar email=message.userName}}
         </span>
-        <span class="chat-box__username">
-          {{message.userName}}
-        </span>
 
         <span class="chat-box__message">
+          <span class="chat-box__username">
+            {{message.userName}}
+          </span>
           {{message.payload}}
         </span>
       </div>
     {{/each}}
-    <div id="chat-box__last-message" style="height: 10px; background: pink;"></div>
+    <div id="chat-box__last-message"></div>
   </div>
 
   {{chat-box/message-input sendMessage=sendMessage}}

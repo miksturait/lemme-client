@@ -1,7 +1,7 @@
 <div class="card chat-box">
   <div class="chat-box__message-list">
     {{#each messages as |message|}}
-    <div class="chat-box__msg-container {{if message.fromOther 'other' 'me'}}">
+      <div class="chat-box__msg-container {{if message.fromOther 'other' 'me'}}">
         <span class="chat-box__username">
           {{message.userName}}
         </span>
@@ -11,6 +11,7 @@
         </span>
       </div>
     {{/each}}
+    <div id="chat-box__last-message" style="height: 10px; background: pink;"></div>
   </div>
 
   {{chat-box/message-input sendMessage=sendMessage}}

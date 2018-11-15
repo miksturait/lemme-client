@@ -13,6 +13,7 @@ export default Service.extend({
 
   authenticate(nickname) {
     this.set('nickname', nickname);
+    document.cookie = `socketUserName=${nickname};`;
     this.router.transitionTo('protected.dashboard');
   },
 

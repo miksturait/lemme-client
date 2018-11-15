@@ -1,5 +1,7 @@
-{{tables-preview tables=model}}
+<div class="container">
+  {{tables-preview tables=model}}
 
-{{#messages-provider as |socket|}}
-  {{chat-box messages=socket.messages sendMessage=socket.sendMessage}}
-{{/messages-provider}}
+  {{#messages-provider as |socket|}}
+    {{chat-box messages=socket.messages sendMessage=socket.sendMessage}}
+  {{/messages-provider}}
+</div>

@@ -1,11 +1,17 @@
-<h1>CHAT</h1>
+<div class="card chat-box">
+  <div class="chat-box__message-list">
+    {{#each messages as |message|}}
+    <div class="chat-box__msg-container {{if message.fromOther 'other' 'me'}}">
+        <span class="chat-box__username">
+          {{message.userName}}
+        </span>
 
-<ul>
-  {{#each messages as |message|}}
-    <li>
-      {{message}}
-    </li>
-  {{/each}}
-</ul>
+        <span class="chat-box__message">
+          {{message.payload}}
+        </span>
+      </div>
+    {{/each}}
+  </div>
 
-{{chat-box/message-input sendMessage=sendMessage}}
+  {{chat-box/message-input sendMessage=sendMessage}}
+</div>

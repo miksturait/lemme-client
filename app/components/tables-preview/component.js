@@ -1,6 +1,5 @@
 import Component from '@ember/component';
 import { inject as service } from '@ember/service';
-import { range } from 'lodash';
 import { filterBy } from '@ember/object/computed';
 
 export default Component.extend({
@@ -16,9 +15,7 @@ export default Component.extend({
 
   actions: {
     addTable() {
-     const table = this.get('store')
-        .createRecord('table', {name: '1', seatsCount: this.seatsCount}).save();
-
+      this.get('store').createRecord('table', {name: '1', seatsCount: this.seatsCount}).save();
     },
 
     removeTable(table) {

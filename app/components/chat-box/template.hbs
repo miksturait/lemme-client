@@ -2,6 +2,9 @@
   <div class="chat-box__message-list">
     {{#each messages as |message|}}
       <div class="chat-box__msg-container {{if message.fromOther 'other' 'me'}}">
+        <span class="chat-box__avatar">
+          {{ember-initials/gravatar email=message.userName}}
+        </span>
         <span class="chat-box__username">
           {{message.userName}}
         </span>

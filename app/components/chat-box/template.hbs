@@ -1,16 +1,20 @@
 <div class="card chat-box">
   <div class="chat-box__message-list">
     {{#each messages as |message|}}
-    <div class="chat-box__msg-container {{if message.fromOther 'other' 'me'}}">
-        <span class="chat-box__username">
-          {{message.userName}}
+      <div class="chat-box__msg-container {{if message.fromOther 'other' 'me'}}">
+        <span class="chat-box__avatar">
+          {{ember-initials/gravatar email=message.userName}}
         </span>
 
         <span class="chat-box__message">
+          <span class="chat-box__username">
+            {{message.userName}}
+          </span>
           {{message.payload}}
         </span>
       </div>
     {{/each}}
+    <div id="chat-box__last-message"></div>
   </div>
 
   {{chat-box/message-input sendMessage=sendMessage}}

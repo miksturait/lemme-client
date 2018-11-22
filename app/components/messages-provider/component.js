@@ -17,12 +17,13 @@ export default Component.extend({
     const socket = openSocket(ENV.socketURI);
 
     socket.on('message', (content) => {
-      const { userName, payload } = content;
+      const { userName, message, createdAt } = content;
 
       this.get('messages').pushObject({
         fromOther: this._messageOrigin(userName),
         userName,
-        payload
+        message,
+        createdAt
       });
     });
     this.set('socket', socket);
@@ -33,8 +34,8 @@ export default Component.extend({
   },
 
   actions: {
-    sendMessage(payload) {
-      this.get('socket').emit('message', payload);
+    sendMessage(message) {
+      this.get('socket').emit('message', { message, createdAt: new Date() });
     }
   }
 });

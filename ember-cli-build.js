@@ -6,7 +6,10 @@ module.exports = function(defaults) {
   let app = new EmberApp(defaults, {
     sassOptions: {
       extension: 'sass'
-    }
+    },
+    babel: {
+      plugins: ['transform-object-rest-spread'],
+    },
   });
 
   // Use `app.import` to add additional libraries to the generated

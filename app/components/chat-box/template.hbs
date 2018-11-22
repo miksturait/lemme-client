@@ -8,7 +8,7 @@
 
         <span class="chat-box__message">
           <span class="chat-box__username">
-            {{message.userName}}
+            {{message.userName}} - {{relative-time message.createdAt}}
           </span>
           {{message.payload}}
         </span>
